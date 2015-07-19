@@ -42,6 +42,10 @@ func (b *Bitmap) IsSet(bit uint64) (bool, error) {
 	return (b.data[uint64(bit/8)]>>(bit%8))&1 == 1, nil
 }
 
+func (b *Bitmap) Size() uint64 {
+	return b.size
+}
+
 func (b *Bitmap) Clear() {
 	b.data = make([]byte, len(b.data))
 }
